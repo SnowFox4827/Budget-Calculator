@@ -1,0 +1,10 @@
+services:
+  budget-calculator:
+    build: .
+    image: budget-calculator
+    container_name: budget-calculator
+    # Port is set in .env (PORT). Format: HOST_PORT:CONTAINER_PORT —
+    # nginx always listens on 80 inside the container.
+    ports:
+      - "${PORT:-8080}:80"
+    restart: unless-stopped

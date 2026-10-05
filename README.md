@@ -20,13 +20,21 @@ bundled locally, no build step, no backend.
 
 ## Run
 
-Open `index.html` directly in a browser, or serve the folder:
+**Local, no install:** open `index.html` directly in a browser, or:
 
 ```bash
-python3 -m http.server 8000
+python3 -m http.server 8000   # then visit http://localhost:8000
 ```
 
-Then visit http://localhost:8000.
+**Docker:**
+
+```bash
+docker compose up -d --build
+```
+
+The port is set in `.env` (`PORT=8080` by default — change it, then restart
+with `docker compose up -d --build`). The app is at
+`http://localhost:<PORT>`.
 
 Light and dark "paper & envelopes" themes with a sliding toggle (persisted in
 `localStorage`).
