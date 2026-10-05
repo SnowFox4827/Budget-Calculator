@@ -1,4 +1,4 @@
-export function applyTheme(theme) {
+function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     // Let components re-read CSS variables (e.g. chart colors) after theme flips.
     document.dispatchEvent(new CustomEvent('theme-changed', { detail: { theme } }));
@@ -11,14 +11,18 @@ export function applyTheme(theme) {
     }
 }
 
-export function toggleTheme() {
+function toggleTheme() {
     const current = document.documentElement.getAttribute('data-theme') || 'light';
     const next = current === 'dark' ? 'light' : 'dark';
     localStorage.setItem('bm-theme', next);
     applyTheme(next);
 }
 
-export function initTheme() {
+function initTheme() {
     const saved = localStorage.getItem('bm-theme') || 'light';
     applyTheme(saved);
 }
+
+window.applyTheme = applyTheme;
+window.toggleTheme = toggleTheme;
+window.initTheme = initTheme;
