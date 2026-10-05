@@ -15,26 +15,44 @@ A standalone web app with two financial calculators, extracted from the
 
 ## Stack
 
-Pure static frontend: HTML, CSS and vanilla JS (ES Modules), Chart.js v4.4.1
-bundled locally, no build step, no backend.
+Pure static frontend: HTML, CSS and vanilla JS (classic scripts, works over
+`file://`), Chart.js v4.4.1 and its annotation plugin bundled locally, no build
+step. Served in production by Flask + gunicorn inside Docker.
 
 ## Run
+
+**Docker (recommended):**
+
+1. Copy the example env file and pick a port:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Then edit `.env` and set `PORT` to whatever you want (any free port —
+   e.g. `PORT=8080`, `PORT=3000`, or `PORT=80`). This is the port the app
+   will be served on.
+
+2. Build and start:
+
+   ```bash
+   docker compose up -d --build
+   ```
+
+3. Visit `http://localhost:<PORT>` — e.g. `http://localhost:8080` if you
+   left the default.
+
+Changing the port later: edit `PORT` in `.env`, then rerun
+`docker compose up -d --build`.
 
 **Local, no install:** open `index.html` directly in a browser, or:
 
 ```bash
-python3 -m http.server 8000   # then visit http://localhost:8000
+pip install -r requirements.txt
+PORT=8080 python app.py        # then visit http://localhost:8080
 ```
 
-**Docker:**
-
-```bash
-docker compose up -d --build
-```
-
-The port is set in `.env` (`PORT=8080` by default — change it, then restart
-with `docker compose up -d --build`). The app is at
-`http://localhost:<PORT>`.
+(Plain `python3 -m http.server` also works if you don't want Flask.)
 
 Light and dark "paper & envelopes" themes with a sliding toggle (persisted in
 `localStorage`).
