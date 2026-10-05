@@ -54,5 +54,5 @@ PORT=8080 python app.py        # then visit http://localhost:8080
 
 (Plain `python3 -m http.server` also works if you don't want Flask.)
 
-Light and dark "paper & envelopes" themes with a sliding toggle (persisted in
+Light and dark themes with a sliding toggle (persisted in
 `localStorage`).
