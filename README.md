@@ -21,7 +21,7 @@ step. Served by Flask inside Docker.
 
 ## Run
 
-**Docker (recommended):**
+### Docker (recommended)
 
 1. Copy the example env file and pick a port:
 
@@ -45,14 +45,34 @@ step. Served by Flask inside Docker.
 Changing the port later: edit `PORT` in `.env`, then rerun
 `docker compose up -d --build`.
 
-**Local, no install:** open `index.html` directly in a browser, or:
+### Using python3 ./app.py
 
-```bash
-pip install -r requirements.txt
-PORT=8080 python app.py        # then visit http://localhost:8080
+Run the Flask server directly on your host — no Docker needed.
+
+1. Install the dependencies (Flask, from `requirements.txt`):
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Start the app, optionally picking a port (defaults to 8080):
+
+   ```bash
+   PORT=8080 python3 ./app.py
+   ```
+
+3. Visit `http://localhost:<PORT>` — e.g. `http://localhost:8080`.
+
+On Windows, set the port inline instead of exporting it:
+
+```bat
+set PORT=8080
+python3 .\app.py
 ```
 
-(Plain `python3 -m http.server` also works if you don't want Flask.)
+Stop the server with `Ctrl+C`. If Flask isn't installed, `python3 -m
+http.server` from the project directory also works (the app is pure static
+frontend and works over `file://` too — just open `index.html`).
 
 Light and dark themes with a sliding toggle (persisted in
 `localStorage`).
