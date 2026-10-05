@@ -4,7 +4,7 @@ services:
     image: budget-calculator
     container_name: budget-calculator
     # Port is set in .env (PORT). Format: HOST_PORT:CONTAINER_PORT —
-    # nginx always listens on 80 inside the container.
+    # Flask binds to 8080 inside the container (see Dockerfile CMD).
     ports:
-      - "${PORT:-8080}:80"
+      - "${PORT:-8080}:8080"
     restart: unless-stopped

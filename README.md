@@ -17,7 +17,7 @@ A standalone web app with two financial calculators, extracted from the
 
 Pure static frontend: HTML, CSS and vanilla JS (classic scripts, works over
 `file://`), Chart.js v4.4.1 and its annotation plugin bundled locally, no build
-step. Served in production by Flask + gunicorn inside Docker.
+step. Served by Flask inside Docker.
 
 ## Run
 

@@ -8,8 +8,7 @@ COPY index.html app.py ./
 COPY css/ css/
 COPY js/  js/
 
-# Flask reads PORT itself (default 8080) and gunicorn passes it through.
-EXPOSE ${PORT:-8080}
-ENV PORT=${PORT:-8080}
+EXPOSE 8080
 
-CMD exec gunicorn --bind 0.0.0.0:${PORT:-8080} --workers 2 app:app
+# Flask's built-in server; PORT comes from the environment (default 8080).
+CMD ["python", "app.py"]
